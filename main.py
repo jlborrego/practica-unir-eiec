@@ -24,10 +24,12 @@ if __name__ == "__main__":
         remove_duplicates = sys.argv[2].lower() == "yes"
         sort_order = sys.argv[3].lower() == "desc"
     else:
-        print("Uso: python script.py <nombre_fichero> <eliminar_duplicados: yes|no> <orden: asc|desc>")
+        print("Use: python script.py <file_number> <delete_duplicates: yes|no> <order: asc|desc>")
+        print("The file must be specified as the first argument")
+        print("The second argument indicates whether duplicates should be removed")
         sys.exit(1)
 
-    print(f"Se leerán las palabras del fichero {filename}")
+    print(f"The words from the file {filename} will be read")
     file_path = os.path.join(".", filename)
     if os.path.isfile(file_path):
         word_list = []
@@ -35,7 +37,7 @@ if __name__ == "__main__":
             for line in file:
                 word_list.append(line.strip())
     else:
-        print(f"El fichero {filename} no existe")
+        print(f"The file {filename} does not exist")
         word_list = ["ravenclaw", "gryffindor", "slytherin", "hufflepuff"]
 
     if remove_duplicates:
@@ -43,3 +45,4 @@ if __name__ == "__main__":
 
     sorted_words = sort_list(word_list, ascending=(sort_order == "asc"))
     print(sorted_words)
+    print(sort_list(word_list))
